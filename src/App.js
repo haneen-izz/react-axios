@@ -26,7 +26,7 @@ class App extends React.Component {
     // console.log('key', process.env.REACT_APP_LOCATIONIQ_KEY);
 
     try {
-      let reqUrl = `http://localhost:3001/getWeather?searchQuery=${this.state.searchQuery}`;
+      let reqUrl = `${process.env.REACT_APP_SERVER_LINK}/getWeather?searchQuery=${this.state.searchQuery}`;
       console.log(reqUrl);
       let locResult = await axios.get(reqUrl);
       console.log('locResult', locResult);
