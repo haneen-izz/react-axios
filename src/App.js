@@ -22,21 +22,23 @@ class App extends React.Component {
     await this.setState({
       searchQuery: event.target.city.value,
     });
+    console.log(this.state.searchQuery);
+    // console.log('key', process.env.REACT_APP_LOCATIONIQ_KEY);
 
-    console.log('key', process.env.REACT_APP_LOCATIONIQ_KEY);
     try {
-      let reqUrl = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchQuery}&format=json`;
-
+      let reqUrl = `http://localhost:3001/getWeather?searchQuery=${this.state.searchQuery}`;
+      console.log(reqUrl);
       let locResult = await axios.get(reqUrl);
       console.log('locResult', locResult);
       console.log('seclocResult', locResult.data);
-      console.log('seclocResult', locResult.data[0]);
+      // console.log('seclocResult', locResult.data[0]);
 
       this.setState({
-        locationResult: locResult.data[0],
+        locationResult: locResult.data,
         showLocInfo: true,
         showError: false,
       });
+      console.log(this.state.locationResult);
     } catch {
       console.log('something went wrong');
       this.setState({
@@ -45,6 +47,7 @@ class App extends React.Component {
       });
     }
   };
+
   render() {
     return (
       <div>
@@ -98,17 +101,28 @@ class App extends React.Component {
             <p style={{ fontWeight: 'bold' }}>
               City name: {this.state.searchQuery}
             </p>
-            <p style={{ fontWeight: 'bold' }}>
+            {/* <p style={{ fontWeight: 'bold' }}>
               latitude: {this.state.locationResult.lat}
             </p>
             <p style={{ fontWeight: 'bold' }}>
               longitude: {this.state.locationResult.lon}{' '}
+            </p> */}
+            <p style={{ fontWeight: 'bold' }}>
+              Description: {this.state.locationResult[0].description}
             </p>
 
+            <p style={{ fontWeight: 'bold' }}>
+              Description: {this.state.locationResult[1].description}{' '}
+            </p>
+
+            <p style={{ fontWeight: 'bold' }}>
+              Description: {this.state.locationResult[2].description}{' '}
+            </p>
+{/* 
             <img
               src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10`}
               alt='city'
-            />
+            /> */}
           </>
         )}
         {this.state.showError && (
