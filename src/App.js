@@ -3,6 +3,8 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
 import './App.css';
 
 class App extends React.Component {
@@ -98,7 +100,13 @@ class App extends React.Component {
 
         {this.state.showLocInfo && (
           <>
-            <p style={{ fontWeight: 'bold' }}>
+            <p
+              style={{
+                fontWeight: 'bold',
+                textAlign: 'center',
+                fontSize: '30px',
+              }}
+            >
               City name: {this.state.searchQuery}
             </p>
             {/* <p style={{ fontWeight: 'bold' }}>
@@ -107,6 +115,48 @@ class App extends React.Component {
             <p style={{ fontWeight: 'bold' }}>
               longitude: {this.state.locationResult.lon}{' '}
             </p> */}
+            <Row
+              xs={1}
+              md={3}
+              className='g-4'
+              style={{
+                position: 'relative',
+                margin: '90px',
+                marginTop: '10px',
+              }}
+            >
+              <Card border='primary' style={{ width: '25rem' }}>
+                <Card.Header style={{ fontWeight: 'bold' }}>city</Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    Description and date:{' '}
+                    {this.state.locationResult[0].description}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+              <br />
+              <Card border='primary' style={{ width: '25rem' }}>
+                <Card.Header style={{ fontWeight: 'bold' }}>city</Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    Description and date:{' '}
+                    {this.state.locationResult[1].description}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+              <br />
+              <Card border='primary' style={{ width: '25rem' }}>
+                <Card.Header style={{ fontWeight: 'bold' }}>city</Card.Header>
+                <Card.Body>
+                  <Card.Text>
+                    Description and date:{' '}
+                    {this.state.locationResult[2].description}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Row>
+            {/* 
+
             <p style={{ fontWeight: 'bold' }}>
               Description: {this.state.locationResult[0].description}
             </p>
@@ -117,8 +167,8 @@ class App extends React.Component {
 
             <p style={{ fontWeight: 'bold' }}>
               Description: {this.state.locationResult[2].description}{' '}
-            </p>
-{/* 
+            </p> */}
+            {/* 
             <img
               src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.locationResult.lat},${this.state.locationResult.lon}&zoom=10`}
               alt='city'
