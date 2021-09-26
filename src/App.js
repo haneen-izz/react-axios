@@ -56,6 +56,8 @@ class App extends React.Component {
   };
 
   getWeather = async (event) => {
+    //`${process.env.REACT_APP_SERVER_LINK}/getWeather?city=${this.state.searchQuery}&`;
+    let reqWeatherUrl = `https://lab09-301d33.herokuapp.com/getWeather?city=${this.state.searchQuery}&days=4`
     //${process.env.REACT_APP_SERVER_LINK}/getWeather?city=${this.state.searchQuery}&
     let reqWeatherUrl = `https://lab03d33-lab08-backend.herokuapp.com/getWeather?city=${this.state.searchQuery}&days=4`;
     console.log(reqWeatherUrl);
@@ -68,6 +70,7 @@ class App extends React.Component {
   };
 
   getMovie = async (event) => {
+    let reqMovieUrl = `https://lab09-301d33.herokuapp.com/getMovie?searchQuery=${this.state.searchQuery}`;
     //`${process.env.REACT_APP_SERVER_LINK}/getMovie?searchQuery=${this.state.searchQuery}`;
     let reqMovieUrl = `https://lab03d33-lab08-backend.herokuapp.com/getMovie?searchQuery=${this.state.searchQuery}`;
     console.log(reqMovieUrl);
