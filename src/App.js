@@ -57,6 +57,7 @@ class App extends React.Component {
 
   getWeather = async (event) => {
     let reqWeatherUrl = `${process.env.REACT_APP_SERVER_LINK}/getWeather?city=${this.state.searchQuery}&days=4`;
+    //`${process.env.REACT_APP_SERVER_LINK}/getWeather?city=${this.state.searchQuery}&`;
     console.log(reqWeatherUrl);
     let weatherResult = await axios.get(reqWeatherUrl);
     console.log(weatherResult);
@@ -177,15 +178,12 @@ class App extends React.Component {
             })}
 
             {/* 
-
             <p style={{ fontWeight: 'bold' }}>
               Description: {this.state.locationResult[0].description}
             </p>
-
             <p style={{ fontWeight: 'bold' }}>
               Description: {this.state.locationResult[1].description}{' '}
             </p>
-
             <p style={{ fontWeight: 'bold' }}>
               Description: {this.state.locationResult[2].description}{' '}
             </p> */}
