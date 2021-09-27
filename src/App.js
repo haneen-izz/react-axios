@@ -57,7 +57,7 @@ class App extends React.Component {
 
   getWeather = async (event) => {
     //`${process.env.REACT_APP_SERVER_LINK}/getWeather?city=${this.state.searchQuery}&`;
-    let reqWeatherUrl = `https://lab09-301d33.herokuapp.com/getWeather?city=${this.state.searchQuery}&days`
+    let reqWeatherUrl = `https://lab09-301d33.herokuapp.com/getWeather?city=${this.state.searchQuery}&days=4`
     console.log(reqWeatherUrl);
     let weatherResult = await axios.get(reqWeatherUrl);
     console.log(weatherResult);
